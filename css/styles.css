@@ -1,0 +1,150 @@
+
+:root {
+  --bg: #0d1117;
+  --panel: #161b22;
+  --border: #30363d;
+  --text: #c9d1d9;
+  --muted: #8b949e;
+  --accent: #2f81f7;
+  --ok: #238636;
+  --warn: #d29922;
+  --error: #f85149;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.brand { display:flex; align-items:center; gap:10px; }
+.brand .dot { width:10px; height:10px; border-radius:50%; background: var(--accent); }
+.brand h1 { font-size: 18px; margin: 0; }
+
+.controls { display:flex; gap:8px; flex-wrap: wrap; }
+.button, .input {
+  background: #0b1220;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 14px;
+}
+.button:hover { border-color: var(--accent); cursor: pointer; }
+.button.primary { background: var(--accent); border-color: var(--accent); color: white; }
+.button.success { background: var(--ok); border-color: var(--ok); color: white; }
+.button.ghost { background: transparent; }
+.input { min-width: 220px; }
+
+.main {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.card-header, .card-footer {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  display:flex; align-items:center; justify-content:space-between; gap:8px;
+}
+.card-footer { border-top: 1px solid var(--border); border-bottom: none; }
+.card-body { padding: 0; }
+
+.progress {
+  height: 8px;
+  background: #0b1220;
+  border-top: 1px solid var(--border);
+}
+.progress > div {
+  height: 8px;
+  background: var(--accent);
+  width: 0%;
+  transition: width 200ms linear;
+}
+
+.question-wrap {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: #0b1220;
+  min-height: 60vh;
+  max-height: 75vh;
+  overflow: auto;
+}
+.question-wrap img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.badge { padding: 4px 8px; border-radius: 999px; border: 1px solid var(--border); color: var(--muted); font-size: 12px; }
+
+.kbd {
+  padding: 2px 6px;
+  border: 1px solid var(--border);
+  border-bottom-width: 2px;
+  border-radius: 6px;
+  font-size: 12px;
+  color: var(--muted);
+  background: #0b1220;
+}
+
+.footer-actions { display:flex; gap:8px; flex-wrap:wrap; }
+.spacer { flex:1; }
+
+.hidden { display: none !important; }
+.small { font-size: 12px; color: var(--muted); }
+
+a.link { color: var(--accent); text-decoration: none; }
+a.link:hover { text-decoration: underline; }
+
+/* MCQ styles */
+.options { display:flex; gap:10px; flex-wrap:wrap; padding:16px; border-top:1px solid var(--border); }
+.option {
+  display:flex; align-items:center; gap:8px;
+  padding:10px 14px; border:1px solid var(--border); border-radius:10px;
+  background:#0b1220; cursor:pointer; user-select:none;
+}
+.option:hover { border-color: var(--accent); }
+.option .letter { font-weight:700; width:20px; text-align:center; }
+.option .status { width:16px; height:16px; display:inline-block; }
+.option.correct { border-color: var(--ok); }
+.option.correct .letter { color: var(--ok); }
+.option.incorrect { border-color: var(--error); }
+.option.incorrect .letter { color: var(--error); }
+.option .tick::after { content: "✓"; font-weight:800; }
+.option .cross::after { content: "✕"; font-weight:800; }
+.controls .toggle { background: transparent; border:1px dashed var(--border); }
+.controls .toggle.active { border-color: var(--warn); color: var(--warn); }
+.small.muted { color: var(--muted); }
