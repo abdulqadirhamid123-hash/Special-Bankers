@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Question Bank</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="brand">
+        <div class="dot"></div>
+        <h1>Question Bank</h1>
+      </div>
+      <div class="controls">
+        <button id="prev" class="button">← Prev <span class="kbd">←</span></button>
+        <button id="next" class="button">Next → <span class="kbd">→</span></button>
+        <button id="shuffle" class="button">Shuffle <span class="kbd">S</span></button>
+        <button id="toggleAnswer" class="button ghost hidden">Show / Hide Answer <span class="kbd">A</span></button>
+        <button id="markCorrect" class="button success">Mark Correct <span class="kbd">K</span></button>
+        <button id="markIncorrect" class="button" style="border-color: var(--error); color: var(--error);">Mark Incorrect <span class="kbd">J</span></button>
+        <button id="exportBtn" class="button">Export My Answers</button>
+        <label class="button" for="importInput">Import Answers</label>
+        <input id="importInput" type="file" accept="application/json" class="hidden">
+        <button id="toggleSetKey" class="button toggle" title="Toggle set-correct mode">Set Correct (Admin)</button>
+        <button id="exportKeyBtn" class="button">Export Answer Key</button>
+        <label class="button" for="importKeyInput">Import Answer Key</label>
+        <input id="importKeyInput" type="file" accept="application/json" class="hidden">
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="card">
+        <div class="card-header">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <span class="badge" id="badge">Unseen</span>
+            <span class="small" id="stats">Seen 0/0 • Correct 0</span>
+          </div>
+          <div>
+            <strong id="pos">0 / 0</strong>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="question-wrap">
+            <img id="qImg" alt="Question">
+          </div>
+          <div id="answerWrap" class="question-wrap hidden">
+            <img id="aImg" alt="Answer">
+          </div>
+          <div class="options" id="options">
+            <div class="option" data-letter="A"><span class="letter">A</span><span class="status"></span></div>
+            <div class="option" data-letter="B"><span class="letter">B</span><span class="status"></span></div>
+            <div class="option" data-letter="C"><span class="letter">C</span><span class="status"></span></div>
+            <div class="option" data-letter="D"><span class="letter">D</span><span class="status"></span></div>
+          </div>
+          <div class="progress"><div id="progressFill"></div></div>
+        </div>
+        <div class="card-footer">
+          <div class="small">Tip: Use ← / → to navigate, S to shuffle, A to toggle answer, K/J to mark.</div>
+          <div class="spacer"></div>
+          <div id="thumbs" class="footer-actions"></div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-header">
+          <strong>How this works</strong>
+        </div>
+        <div class="card-body" style="padding:16px; line-height:1.6;">
+          <ol>
+            <li>Select <strong>A/B/C/D</strong>. If an answer key exists, your choice will show a <strong>green tick</strong> for the correct option and a <strong>red cross</strong> on an incorrect selection. Your selection is saved.</li>
+            <li>To set the correct answer for a question, click <strong>Set Correct (Admin)</strong> and then click the correct letter. Use <strong>Export Answer Key</strong> / <strong>Import Answer Key</strong> to save or load keys.</li>
+            <li>Each question is shown as an image. If you provided a matching answer image (filename contains <code>answer</code> or <code>ans</code>), the <em>Show / Hide Answer</em> button will appear.</li>
+            <li>Use <strong>Mark Correct</strong> / <strong>Mark Incorrect</strong> to track progress; this is saved in your browser.</li>
+            <li>You can <strong>Export</strong> your progress to a JSON file and <strong>Import</strong> it later to continue.</li>
+            <li>Upload these files to a GitHub repo and enable Pages to host it, or open <code>index.html</code> locally.</li>
+          </ol>
+          <p class="small">If some answers don't pair automatically, rename the answer images to include <code>answer</code> or <code>ans</code> (e.g., <code>Q12_answer.png</code>).</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
